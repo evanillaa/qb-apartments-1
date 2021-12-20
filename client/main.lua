@@ -75,6 +75,8 @@ local function startListening4Control()
                 else
                     QBCore.Functions.Notify("You are already inside your Apartment!", "error", 4500)
                 end
+            elseif IsControlJustReleased(0, 47) then -- E
+                TriggerEvent('apartments:client:DoorbellMenu')
             end
             Wait(1)
         end
@@ -444,7 +446,7 @@ end)
 CreateThread(function()
     PolyApartment:onPlayerInOut(function(isPointInside)
         if isPointInside then
-            TriggerEvent('cd_drawtextui:ShowUI', 'show', "[E] Enter Apartment")	
+            TriggerEvent('cd_drawtextui:ShowUI', 'show', "[E] Enter Apartment [G] Ring Doorbell")
             startListening4Control()
         else
             TriggerEvent('cd_drawtextui:HideUI')
